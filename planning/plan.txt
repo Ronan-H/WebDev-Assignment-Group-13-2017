@@ -1,0 +1,20 @@
+
+List of pages:
+- Main page
+- Signup/login page (uses form)
+- Products/shop page
+
+Name ideas:
+- Evolutionary Electronics
+- Crap Ü 
+- Compu C
+- Samsang
+- Amizone
+
+-> Going with Compu C
+
+Products we'll sell:
+- Television
+- Mobile phones
+- Laptops
+- Accesseries
