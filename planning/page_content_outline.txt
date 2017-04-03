@@ -1,0 +1,4 @@
+Homepage:
+- Summary of products available
+- Instructions on use of the site (shoppping cart use in particular)
+- Contact info

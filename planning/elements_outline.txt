@@ -1,0 +1,13 @@
+<header div>
+	<login div>
+	
+	</login div>
+</header div>
+
+<menubar div>
+	
+</menubar div>
+
+<main page div>
+
+</main page div>
