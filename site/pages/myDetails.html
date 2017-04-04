@@ -53,7 +53,23 @@
 		</div>
 		
 		<script>
-			var signupButton
+			function onSignupButtonClicked()
+			{
+				// Create the account in localStorage for the person signing up
+				var name = document.getElementById();
+			}
+			
+			function onLoginButtonClicked()
+			{
+				
+			}
+			
+			var signupButton = document.getElementById("submitSignup");
+			var loginButton = document.getElementById("login");
+			
+			signupButton.addEventListener("click", onSignupButtonClicked);
+			loginButton.addEventListener("click", onLoginButtonClicked);
+			
 			var accCreated = !(localStorage.getItem("name") === null);
 			
 			if (accCreated) {
