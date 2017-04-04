@@ -63,5 +63,5 @@ table th{
 div.sidebarDiv{
 	border: dotted;
 	float: left;
-	color:#cc0000;
+	background-color:#cc0000;
 }
