@@ -40,5 +40,23 @@ body {
 }
 
 #menubarDiv a:active {
+	color:#ff6660;
+}
+
+.segmentDiv{
+	background-color: #ff6600;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+}
+
+table{
+	border:2px;
+	border-style: solid;
+}
+
+table th{
+	background-color: #000000;
 	
 }
+
