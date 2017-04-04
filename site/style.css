@@ -1,4 +1,44 @@
 
-headerDiv {
+body {
+	padding: 0;
+	margin: 5px;
+}
+
+#headerDiv {
+	width: 100%;
+	height: 100%;
+}
+
+#headerDiv #siteLogo {
+	display: block;
+	margin: 0 auto;
+}
+
+#menubarDiv {
+	background-color: #CC0000;
+	border: 1px 0;
+	border-style: solid;
+	padding: 8px 0;
+}
+
+#menubarDiv a:link {
+	border: 2px solid black;
+	border-radius: 0.4em;
+	padding: 3px;
+	text-decoration: none;
+	color: black;
+	background-color: red;
+	margin: 3px 0px;
+}
+
+#menubarDiv a:visited {
+	
+}
+
+#menubarDiv a:hover {
+	
+}
+
+#menubarDiv a:active {
 	
 }
