@@ -21,100 +21,105 @@
 			My Details
 		</div>
 		
-		<div id="signupDiv">
-			<h2>Sign Up</h2>
+		<div id="loginSignupDiv" class="segmentDiv">
+			<h2>Login / Signup</h2>
 			<table>
 				<tr>
 					<th>Name:</th>
-					<td><input id="signupName" type="text"></input></td>
+					<td><input id="nameBox" type="text"></input></td>
 				</tr>
 				
 				<tr>
 					<th>Password:</th>
-					<td><input id="signupPassword" type="text"></input></td>
-				</tr>
-			</table>
-			<button id="submitSignup">Sign Up</button>
-		</div>
-		
-		<div id="loginDiv">
-			<h2>Login</h2>
-			<table>
-				<tr>
-					<th>Name:</th>
-					<td><input id="loginName" type="text"></input></td>
+					<td><input id="passwordBox" type="text"></input></td>
 				</tr>
 				
 				<tr>
-					<th>Password:</th>
-					<td><input id="loginPassword" type="text"></input></td>
+					<!-- Buttons -->
+					<td></td>
+					<td>
+						<button id="loginButton">Log in</button>
+						<button id="signupButton">Sign Up</button>
+					</td>
 				</tr>
 			</table>
-			<button id="login">Log in</button>
 		</div>
 		
-		<div id="detailsDiv">
+		<div id="detailsDiv" class="segmentDiv">
 			<h1>placeholder for detailsDiv</h1>
 		</div>
 		
 		<script>
-			var signupDiv = document.getElementById("signupDiv");
-			var loginDiv = document.getElementById("loginDiv");
+			var loginSignupDiv = document.getElementById("loginSignupDiv");
 			var detailsDiv = document.getElementById("detailsDiv");
-			var signupNameBox = document.getElementById("signupName");
-			var signupPwdBox = document.getElementById("signupPassword");
-			var loginNameBox = document.getElementById("loginName");
-			var loginPwdBox = document.getElementById("loginPassword");
+			var nameBox = document.getElementById("nameBox");
+			var pwdBox = document.getElementById("passwordBox");
+			var loginButton = document.getElementById("loginButton");
+			var signupButton = document.getElementById("signupButton");
 			
-			// Hide signup box and details box, show login box
-			function loginMode()
+			var cust;
+			
+			// Hide details box, show loginSignup box
+			function loginSignupMode()
 			{
-				signupDiv.style.display = "none";
-				loginDiv.style.display = "block";
+				loginSignupDiv.style.display = "block";
 				detailsDiv.style.display = "none";
 			}
 			
-			// Hide details box, show signup and login box
-			function signupMode()
-			{
-				signupDiv.style.display = "block";
-				loginDiv.style.display = "block";
-				detailsDiv.style.display = "none";
-			}
-			
-			// Hide signup box and login box, show details box
+			// Hide loginSignup box, show details box
 			function detailsMode()
 			{
-				signupDiv.style.display = "none";
-				loginDiv.style.display = "none";
+				loginSignupDiv.style.display = "none";
 				detailsDiv.style.display = "block";
 			}
 			
 			function onSignupButtonClicked()
 			{
 				// Create the account in localStorage for the person signing up
-				var name = signupNameBox.value;
-				var password = signupPwdBox.value;
-				localStorage.setItem("name", name);
-				localStorage.setItem("password", password);
-				localStorage.setItem("loggedIn", "true");
+				var name = nameBox.value;
+				var password = pwdBox.value;
+				
+				// Create customer object
+				cust = {name:name, password:password, 
+					email:"email not set", address:"address not set",
+					ccNumber:"credit card num not set"};
+				
+				localStorage.setItem("customer", JSON.stringify(cust));
 				alert("Signup successful! You are now logged in.");
 				
 				// Clear and hide the signup box
-				signupNameBox.value = "";
-				signupPwdBox.value = "";
+				nameBox.value = "";
+				pwdBox.value = "";
 				
-				loginMode();
+				detailsMode();
 			}
 			
 			function onLoginButtonClicked()
 			{
-				var name = signupNameBox.value;
-				var password = signupPwdBox.value;
+				// Ensure the user has actually made an account
+				var accCreated = !(localStorage.getItem("customer") === null);
+				
+				if (accCreated) {
+					var name = nameBox.value;
+					var password = pwdBox.value;
+					
+					cust = JSON.parse(localStorage.getItem("customer"));
+					var validLogin = (name === cust.name && password === cust.password);
+					
+					console.log("cust name: " + cust.name + " entered name: " + name);
+					console.log("cust password: " + cust.password + "entered password: " + password);
+					
+					if (validLogin) {
+						localStorage.setItem("loggedIn", "true");
+						alert("Successfully logged in!");
+						detailsMode();
+					} else {
+						alert("Entered name or password was not corect! Please try again.");
+					}
+				} else {
+					alert("You must create an account before logging in.");
+				}
 			}
-			
-			var signupButton = document.getElementById("submitSignup");
-			var loginButton = document.getElementById("login");
 			
 			signupButton.addEventListener("click", onSignupButtonClicked);
 			loginButton.addEventListener("click", onLoginButtonClicked);
