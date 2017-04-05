@@ -26,12 +26,12 @@
 			<table>
 				<tr>
 					<th>Name:</th>
-					<td><input type="text"></input></td>
+					<td><input id="signupName" type="text"></input></td>
 				</tr>
 				
 				<tr>
 					<th>Password:</th>
-					<td><input type="text"></input></td>
+					<td><input id="signupPassword" type="text"></input></td>
 				</tr>
 			</table>
 			<button id="submitSignup">Sign Up</button>
@@ -42,27 +42,75 @@
 			<table>
 				<tr>
 					<th>Name:</th>
-					<td><input type="text"></input></td>
+					<td><input id="loginName" type="text"></input></td>
 				</tr>
 				
 				<tr>
 					<th>Password:</th>
-					<td><input type="text"></input></td>
+					<td><input id="loginPassword" type="text"></input></td>
 				</tr>
 			</table>
 			<button id="login">Log in</button>
 		</div>
 		
+		<div id="detailsDiv">
+			<h1>placeholder for detailsDiv</h1>
+		</div>
+		
 		<script>
+			var signupDiv = document.getElementById("signupDiv");
+			var loginDiv = document.getElementById("loginDiv");
+			var detailsDiv = document.getElementById("detailsDiv");
+			var signupNameBox = document.getElementById("signupName");
+			var signupPwdBox = document.getElementById("signupPassword");
+			var loginNameBox = document.getElementById("loginName");
+			var loginPwdBox = document.getElementById("loginPassword");
+			
+			// Hide signup box and details box, show login box
+			function loginMode()
+			{
+				signupDiv.style.display = "none";
+				loginDiv.style.display = "block";
+				detailsDiv.style.display = "none";
+			}
+			
+			// Hide details box, show signup and login box
+			function signupMode()
+			{
+				signupDiv.style.display = "block";
+				loginDiv.style.display = "block";
+				detailsDiv.style.display = "none";
+			}
+			
+			// Hide signup box and login box, show details box
+			function detailsMode()
+			{
+				signupDiv.style.display = "none";
+				loginDiv.style.display = "none";
+				detailsDiv.style.display = "block";
+			}
+			
 			function onSignupButtonClicked()
 			{
 				// Create the account in localStorage for the person signing up
-				var name = document.getElementById();
+				var name = signupNameBox.value;
+				var password = signupPwdBox.value;
+				localStorage.setItem("name", name);
+				localStorage.setItem("password", password);
+				localStorage.setItem("loggedIn", "true");
+				alert("Signup successful! You are now logged in.");
+				
+				// Clear and hide the signup box
+				signupNameBox.value = "";
+				signupPwdBox.value = "";
+				
+				loginMode();
 			}
 			
 			function onLoginButtonClicked()
 			{
-				
+				var name = signupNameBox.value;
+				var password = signupPwdBox.value;
 			}
 			
 			var signupButton = document.getElementById("submitSignup");
