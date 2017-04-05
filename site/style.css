@@ -2,6 +2,8 @@
 body {
 	padding: 0;
 	margin: 5px;
+	height:100%;
+	width:100%;
 }
 
 #headerDiv {
@@ -64,4 +66,12 @@ div.sidebarDiv{
 	border: dotted;
 	float: left;
 	background-color:#cc0000;
+	height:100%;
+	width: 8%;
+	margin:auto;
+	
+}
+
+div.productsDiv{
+	float: right;
 }
