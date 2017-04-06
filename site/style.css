@@ -62,7 +62,7 @@ table th{
 	background-color: #cc2900;
 }
 
-div.sidebarDiv{
+.sidebarDiv{
 	border: dotted;
 	float: left;
 	background-color:#cc0000;
@@ -72,7 +72,7 @@ div.sidebarDiv{
 	
 }
 
-div.productsDiv{
+.productsDiv{
 	float: left;
 	margin: 0px 25px;
 	overflow: hidden;
@@ -85,17 +85,18 @@ div.productsDiv{
 	margin: 5px 2px;
 }
 
+/*
+ * A div for containing everything under the header
+ */
+.mainContent {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
 #shoppingCart{
 	float:right;
 	width: auto;
 	height: 70px;
 	margin: 0px 25px;
-}
-
-/*
- * A div for containing everything under the header
- */
-.mainContent {
-	width: 100%;
-	position: relative;
 }
