@@ -73,5 +73,6 @@ div.sidebarDiv{
 }
 
 div.productsDiv{
-	float: right;
+	float: left;
+	margin: 0px 25px;
 }
