@@ -66,7 +66,7 @@ div.sidebarDiv{
 	border: dotted;
 	float: left;
 	background-color:#cc0000;
-	height:2000px;
+	height: 100%;
 	width: 8%;
 	margin:auto;
 	
@@ -76,6 +76,9 @@ div.productsDiv{
 	float: left;
 	margin: 0px 25px;
 	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 .productsDiv h1 {
@@ -87,4 +90,12 @@ div.productsDiv{
 	width: auto;
 	height: 70px;
 	margin: 0px 25px;
+}
+
+/*
+ * A div for containing everything under the header
+ */
+.mainContent {
+	width: 100%;
+	position: relative;
 }
