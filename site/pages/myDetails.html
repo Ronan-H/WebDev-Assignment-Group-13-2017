@@ -31,7 +31,7 @@
 				
 				<tr>
 					<th>Password:</th>
-					<td><input id="passwordBox" type="text"></input></td>
+					<td><input id="passwordBox" type="password"></input></td>
 				</tr>
 				
 				<tr>
@@ -85,6 +85,7 @@
 					ccNumber:"credit card num not set"};
 				
 				localStorage.setItem("customer", JSON.stringify(cust));
+				localStorage.setItem("loggedIn", "true");
 				alert("Signup successful! You are now logged in.");
 				
 				// Clear and hide the signup box
@@ -107,7 +108,7 @@
 					var validLogin = (name === cust.name && password === cust.password);
 					
 					console.log("cust name: " + cust.name + " entered name: " + name);
-					console.log("cust password: " + cust.password + "entered password: " + password);
+					console.log("cust password: " + cust.password + " entered password: " + password);
 					
 					if (validLogin) {
 						localStorage.setItem("loggedIn", "true");
@@ -117,14 +118,26 @@
 						alert("Entered name or password was not corect! Please try again.");
 					}
 				} else {
-					alert("You must create an account before logging in.");
+					alert("You must create an account by signing up before logging in.");
 				}
+			}
+			
+			// Show the correct layout (eg. hide login box if already logged in)
+			var accCreated = !(localStorage.getItem("customer") === null);
+			var loggedIn = false;
+			
+			if (accCreated) {
+				loggedIn = (localStorage.getItem("loggedIn") === "true");
+			}
+			
+			if (loggedIn) {
+				detailsMode();
+			} else {
+				loginSignupMode();
 			}
 			
 			signupButton.addEventListener("click", onSignupButtonClicked);
 			loginButton.addEventListener("click", onLoginButtonClicked);
-			
-			var accCreated = !(localStorage.getItem("name") === null);
 			
 			if (accCreated) {
 				// Check if user is logged in
