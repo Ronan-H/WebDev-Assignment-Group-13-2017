@@ -76,3 +76,10 @@ div.productsDiv{
 	float: left;
 	margin: 0px 25px;
 }
+
+#shoppingCart{
+	float:right;
+	width: auto;
+	height: 70px;
+	margin: 0px 25px;
+}
