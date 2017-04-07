@@ -76,7 +76,7 @@ div.productsDiv{
 	float: left;
 	margin: 0px 25px;
 	overflow: hidden;
-	position: absolute;
+	position: static;
 	right: 0;
 	top: 0;
 }
