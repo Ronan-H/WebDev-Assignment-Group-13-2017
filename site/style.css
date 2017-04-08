@@ -1,14 +1,19 @@
 
+html {
+	width: 100%;
+	height: 100%;
+}
+
 body {
 	padding: 0;
 	margin: 5px;
-	height:100%;
-	width:100%;
+	height: 100%;
+	width: 100%;
 }
 
 #headerDiv {
 	width: 100%;
-	height: 100%;
+	margin: 3px;
 }
 
 #headerDiv #siteLogo {
@@ -63,35 +68,47 @@ table th{
 }
 
 .sidebarDiv{
+	display: table-cell;
 	border: dotted;
-	float: left;
-	background-color:#cc0000;
-	height: 100%;
-	width: 8%;
-	margin:auto;
-	
+	background-color: #cc0000;
+	width: 11%;
+}
+
+.sidebarLink{
+	display: block;
+	text-align: left;
+	color: white;
+	font-size: 2em;
+	margin: 10px 0;
 }
 
 .productsDiv{
-	float: left;
-	margin: 0px 25px;
-	overflow: hidden;
-	position: absolute;
+	display: table-cell;
+	width: 85%;
+	height: 100%;
 	right: 0;
 	top: 0;
+}
+
+.productsDiv table {
+	margin: 5px;
 }
 
 .productsDiv h1 {
 	margin: 5px 2px;
 }
 
+.productCategoryDiv {
+	margin: 0 10px;
+}
+
 /*
  * A div for containing everything under the header
  */
 .mainContent {
-	float: left;
+	display: table;
 	width: 100%;
-	position: relative;
+	height: 100%;
 }
 
 #shoppingCart{
