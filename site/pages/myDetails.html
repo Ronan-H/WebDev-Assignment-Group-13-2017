@@ -45,19 +45,58 @@
 			</table>
 		</div>
 		
+		<!-- Allow the user to change their details here -->
 		<div id="detailsDiv" class="segmentDiv">
-			<h1>placeholder for detailsDiv</h1>
+			<h2>Edit your details here (updated live)</h2>
+			
+			<table>
+				<tr>
+					<th>Name:</th>
+					<td><input id="detailsNameBox" type="text"></input></td>
+				</tr>
+				
+				<tr>
+					<th>Password:</th>
+					<td><input id="detailsPasswordBox" type="password"></input></td>
+				</tr>
+				
+				<tr>
+					<th>Email:</th>
+					<td><input id="emailBox" type="email"></input></td>
+				</tr>
+				
+				<tr>
+					<th>Address:</th>
+					<td><input id="addressBox" type="text"></input></td>
+				</tr>
+				
+				<tr>
+					<th>Credit Card Number:</th>
+					<td><input id="ccNumberBox" type="number"></input></td>
+				</tr>
+			</table>
 		</div>
 		
 		<script>
+			<!-- Login/signup elements -->
 			var loginSignupDiv = document.getElementById("loginSignupDiv");
-			var detailsDiv = document.getElementById("detailsDiv");
 			var nameBox = document.getElementById("nameBox");
 			var pwdBox = document.getElementById("passwordBox");
 			var loginButton = document.getElementById("loginButton");
 			var signupButton = document.getElementById("signupButton");
 			
-			var cust;
+			<!-- details elements -->
+			var detailsDiv = document.getElementById("detailsDiv");
+			var detailsNameBox = document.getElementById("detailsNameBox");
+			var detailsPwdBox = document.getElementById("detailsPasswordBox");
+			var emailBox = document.getElementById("emailBox");
+			var addressBox = document.getElementById("addressBox");
+			var ccNumberBox = document.getElementById("ccNumberBox");
+			
+			<!-- customer object -->
+			var cust = {name:"not set", password:"not set", 
+					email:"not set", address:"not set",
+					ccNumber:"not set"};
 			
 			// Hide details box, show loginSignup box
 			function loginSignupMode()
@@ -73,19 +112,40 @@
 				detailsDiv.style.display = "block";
 			}
 			
+			// Update the cust var and the object in localStorage
+			function updateCustomer(name, pwd, email, addr, ccNum)
+			{
+				// Update var
+				cust.name = name;
+				cust.password = pwd;
+				cust.email = email;
+				cust.address = addr;
+				cust.ccNumber = ccNum;
+				
+				// Write to local storage
+				localStorage.setItem("customer", JSON.stringify(cust));
+			}
+			
+			// Update the customer details using the detailsDiv input boxes
+			function updateDetails()
+			{
+				updateCustomer(detailsNameBox.value,
+					detailsPwdBox.value,
+					emailBox.value, 
+					addressBox.value,
+					ccNumberBox.value);
+			}
+			
 			function onSignupButtonClicked()
 			{
 				// Create the account in localStorage for the person signing up
 				var name = nameBox.value;
 				var password = pwdBox.value;
 				
-				// Create customer object
-				cust = {name:name, password:password, 
-					email:"email not set", address:"address not set",
-					ccNumber:"credit card num not set"};
+				updateCustomer(name, password, "not set", "not set", "0");
 				
-				localStorage.setItem("customer", JSON.stringify(cust));
 				localStorage.setItem("loggedIn", "true");
+				
 				alert("Signup successful! You are now logged in.");
 				
 				// Clear and hide the signup box
@@ -93,6 +153,7 @@
 				pwdBox.value = "";
 				
 				detailsMode();
+				populateDetailsBoxes();
 			}
 			
 			function onLoginButtonClicked()
@@ -114,6 +175,7 @@
 						localStorage.setItem("loggedIn", "true");
 						alert("Successfully logged in!");
 						detailsMode();
+						populateDetailsBoxes()
 					} else {
 						alert("Entered name or password was not corect! Please try again.");
 					}
@@ -121,6 +183,23 @@
 					alert("You must create an account by signing up before logging in.");
 				}
 			}
+			
+			<!-- Populate the input boxes with the customer details -->
+			function populateDetailsBoxes()
+			{
+				cust = JSON.parse(localStorage.getItem("customer"));
+				detailsNameBox.value = cust.name;
+				detailsPwdBox.value = cust.passwordl
+				emailBox.value = cust.email;
+				addressBox.value = cust.address;
+				ccNumberBox.value = cust.ccNumber;
+			}
+			
+			// Update details whenever any action occurs inside the detailsDiv
+			detailsDiv.addEventListener("input", updateDetails);
+			
+			signupButton.addEventListener("click", onSignupButtonClicked);
+			loginButton.addEventListener("click", onLoginButtonClicked);
 			
 			// Show the correct layout (eg. hide login box if already logged in)
 			var accCreated = !(localStorage.getItem("customer") === null);
@@ -132,21 +211,11 @@
 			
 			if (loggedIn) {
 				detailsMode();
+				populateDetailsBoxes();
 			} else {
 				loginSignupMode();
 			}
 			
-			signupButton.addEventListener("click", onSignupButtonClicked);
-			loginButton.addEventListener("click", onLoginButtonClicked);
-			
-			if (accCreated) {
-				// Check if user is logged in
-				var loggedIn = !(localStorage.getItem("loggedIn") === null);
-				
-			} else {
-				// Show sign up page
-				
-			}
 		</script>
 		
 	</body>
