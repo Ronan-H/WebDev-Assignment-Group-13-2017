@@ -175,7 +175,7 @@
 						localStorage.setItem("loggedIn", "true");
 						alert("Successfully logged in!");
 						detailsMode();
-						populateDetailsBoxes()
+						populateDetailsBoxes();
 					} else {
 						alert("Entered name or password was not corect! Please try again.");
 					}
@@ -189,7 +189,7 @@
 			{
 				cust = JSON.parse(localStorage.getItem("customer"));
 				detailsNameBox.value = cust.name;
-				detailsPwdBox.value = cust.passwordl
+				detailsPwdBox.value = cust.password;
 				emailBox.value = cust.email;
 				addressBox.value = cust.address;
 				ccNumberBox.value = cust.ccNumber;

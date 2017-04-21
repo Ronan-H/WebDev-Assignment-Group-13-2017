@@ -11,6 +11,33 @@
 		<!-- All elements in the header: header img, login box and button -->
 		<div id="headerDiv">
 			<img id="siteLogo" src="images/site_logo.png" width=400 />
+			
+			<!-- Greeting displayed when the user is logged in -->
+			<h2 id="greeting">Hello, NAME.</h2>
+			
+			<!-- Login box -->
+			<div id="loginBoxDiv">
+				<h2>Login</h2>
+				<table>
+					<tr>
+						<th>Name:</th>
+						<td><input id="nameBox" type="text"></input></td>
+					</tr>
+					
+					<tr>
+						<th>Password:</th>
+						<td><input id="passwordBox" type="password"></input></td>
+					</tr>
+					
+					<tr>
+						<!-- Buttons -->
+						<td></td>
+						<td>
+							<button id="loginButton">Log in</button>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		
 		<!-- The bar with a list of buttons (links) to go to the other site's pages -->
@@ -56,5 +83,74 @@
 				</tr>
 			</table>
 		</div>
+		
+		<script>
+		
+			/* -========- LOGIN BOX JAVASCRIPT -========- */
+			var loginBoxDiv = document.getElementById("loginBoxDiv");
+			var nameBox = document.getElementById("nameBox");
+			var pwdBox = document.getElementById("passwordBox");
+			var greeting = document.getElementById("greeting");
+			
+			function loginMode()
+			{
+				loginBoxDiv.style.display = "block";
+				greeting.style.display = "none";
+			}
+			
+			function greetingMode()
+			{
+				loginBoxDiv.style.display = "none";
+				greeting.style.display = "block";
+				var custName = JSON.parse(localStorage.getItem("customer")).name;
+				greeting.innerHTML = "Hello, " + custName + ".";
+			}
+			
+			function onLoginButtonClicked()
+			{
+				// Ensure the user has actually made an account
+				var accCreated = !(localStorage.getItem("customer") === null);
+				
+				if (accCreated) {
+					var name = nameBox.value;
+					var password = pwdBox.value;
+					
+					cust = JSON.parse(localStorage.getItem("customer"));
+					var validLogin = (name === cust.name && password === cust.password);
+					
+					console.log("cust name: " + cust.name + " entered name: " + name);
+					console.log("cust password: " + cust.password + " entered password: " + password);
+					
+					if (validLogin) {
+						localStorage.setItem("loggedIn", "true");
+						alert("Successfully logged in!");
+						greetingMode();
+					} else {
+						alert("Entered name or password was not corect! Please try again.");
+					}
+				} else {
+					alert("You must create an account by signing up before logging in.");
+				}
+			}
+			
+			loginButton.addEventListener("click", onLoginButtonClicked);
+			
+			var accCreated = !(localStorage.getItem("customer") === null);
+			var loggedIn = false;
+			
+			if (accCreated) {
+				loggedIn = (localStorage.getItem("loggedIn") === "true");
+			}
+			
+			/* If user is signed in, display greeting */
+			/* Otherwise, display login box */
+			if (loggedIn) {
+				greetingMode();
+			} else {
+				loginMode();
+			}
+			
+			/* -========- END OF LOGIN BOX JAVASCRIPT -========- */
+		</script>
 	</body>
 </html>
