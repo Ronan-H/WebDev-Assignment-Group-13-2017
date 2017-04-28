@@ -10,11 +10,10 @@ body {
 	height: 100%;
 	width: 99.2%;
 	margin: auto;
-	overflow-y: hidden;
 }
 
 h1, h2 {
-	margin: 0.3em 0.2em;
+	margin: 0.25em 0.2em;
 }
 
 p { 
@@ -42,6 +41,7 @@ p {
 #menubarDiv a:link {
 	border: 2px solid black;
 	border-radius: 0.4em;
+	border-style: outset;
 	padding: 3px;
 	text-decoration: none;
 	color: black;
@@ -54,19 +54,21 @@ p {
 }
 
 #menubarDiv a:hover {
-	background-color: grey;
+	background-color: LightGrey;
 	color: Red;
 }
 
 #menubarDiv a:active {
 	color:#ff6660;
+	border-style: inset;
 }
 
 .segmentDiv{
 	background-color: #cccccc;
 	border-style: solid;
-	border-width: 2px;
-	border-radius: 5px;
+	border-width: 0 2px 2px 2px;
+	border-radius: 3.5px;
+	padding: 2px;
 }
 
 table {
@@ -92,6 +94,7 @@ table th {
 	color: white;
 	font-size: 2em;
 	margin: 10px 0;
+	padding: 0 5px;
 }
 
 .productsDiv{
@@ -126,8 +129,7 @@ table th {
 #shoppingCart{
 	float:right;
 	width: auto;
-	height: 70px;
-	margin: 0px 25px;
+	margin: 4px 20px;
 }
 
 #productsCart{
