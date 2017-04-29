@@ -148,8 +148,14 @@ table th {
 
 #greeting {
 	color: #CC0000;
+	background-color: LightCyan    ;
 	font-family: calibri;
 	border: 2px solid black;
 	padding: 3px;
 	border-radius: 5px;
+}
+
+#warningsDiv {
+	color: white;
+	background: red;
 }
