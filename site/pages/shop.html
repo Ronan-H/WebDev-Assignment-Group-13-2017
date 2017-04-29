@@ -50,15 +50,18 @@
 		<div class="mainContent">
 			<!-- The sidebar with a list of the types of products -->
 			<div class="sidebarDiv">
-				<a class="sidebarLink">Accesories</a>
-				<a class="sidebarLink">Laptops</a>
-				<a class="sidebarLink">Phones</a>
-				<a class="sidebarLink">Televisions</a>
+				<button id="acc">Accessories</button>
+				<br>
+				<button id="lapt">Laptops</button>
+				<br>
+				<button id="phone">Phones</button>
+				<br>
+				<button id="tvs">Televisions</button>
 			</div>
 			
 			<!-- products div -->
 			<div class="productsDiv">
-				<div class="productCategoryDiv">
+				<div class="productCategoryDiv" id="accessoriesDiv">
 					<h1>Accessories</h1>
 					<table style="display: inline-block;">
 						<tr>
@@ -131,7 +134,7 @@
 					</table>
 				</div>
 					
-				<div class="productCategoryDiv">
+				<div class="productCategoryDiv"  id="laptopsDiv">
 					<!--Laptops-->
 					<h1>Laptops</h1>
 					<table style="display: inline-block;">
@@ -205,7 +208,7 @@
 					</table>
 				</div>
 				
-				<div class="productCategoryDiv">
+				<div class="productCategoryDiv" id="phonesDiv">
 					<h1>Mobile Phones</h1>
 					<table style="display: inline-block;">
 						<tr>
@@ -278,7 +281,7 @@
 					</table>
 				</div>
 				
-				<div class="productCategoryDiv">
+				<div class="productCategoryDiv" id="tvDiv">
 					<h1>Televisions</h1>
 					<table style="display: inline-block;">
 						<tr>
@@ -567,6 +570,54 @@
 					thumbnail:"televisions/tv5.png"
 				}
 			];
+		<!--Div elements functions--->
+			var accessoriesDiv = document.getElementById("accessoriesDiv");
+			var phonesDiv = document.getElementById("phonesDiv");
+			var laptopsDiv = document.getElementById("laptopsDiv");
+			var tvDiv = document.getElementById("tvDiv");
+			
+		<!--accessories display--->
+			document.getElementById("acc").addEventListener("click", displayAcc);
+			
+			function displayAcc()
+			{
+				tvDiv.style.display = "none";
+				laptopsDiv.style.display = "none";
+				phonesDiv.style.display = "none";
+				accessoriesDiv.style.display = "block";
+			}
+		<!--laptops display--->
+			document.getElementById("lapt").addEventListener("click", displayLaptops)
+			
+			function displayLaptops()
+			{
+				tvDiv.style.display = "none";
+				laptopsDiv.style.display = "block";
+				phonesDiv.style.display = "none";
+				accessoriesDiv.style.display = "none";
+			}
+		<!--phones display--->
+			document.getElementById("phone").addEventListener("click", displayPhones)
+			
+			function displayPhones()
+			{
+				tvDiv.style.display = "none";
+				laptopsDiv.style.display = "none";
+				phonesDiv.style.display = "block";
+				accessoriesDiv.style.display = "none";
+			}
+		<!-- Tv display -->
+			document.getElementById("tvs").addEventListener("click", displayTvs)
+			
+			function displayTvs()
+			{
+				tvDiv.style.display = "block";
+				laptopsDiv.style.display = "none";
+				phonesDiv.style.display = "none";
+				accessoriesDiv.style.display = "none";
+			}
+
+
 		</script>
 	</body>
 </html>
