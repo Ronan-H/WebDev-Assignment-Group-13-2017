@@ -72,7 +72,7 @@
 						</tr>
 						<tr>
 							<th>
-								€32.99 
+								€32.99 &nbsp &nbsp <button onclick="addToCart(0)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -86,7 +86,7 @@
 						</tr>
 						<tr>
 							<th>
-								€13.99 
+								€13.99 &nbsp &nbsp <button onclick="addToCart(1)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -100,7 +100,7 @@
 						</tr>
 						<tr>
 							<th>
-								€69.99 
+								€69.99 &nbsp &nbsp <button onclick="addToCart(2)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -114,7 +114,7 @@
 						</tr>
 						<tr>
 							<th>
-								€39.99
+								€39.99&nbsp &nbsp <button onclick="addToCart(3)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -128,7 +128,7 @@
 						</tr>
 						<tr>
 							<th>
-								€5.00
+								€5.00&nbsp &nbsp <button onclick="addToCart(4)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -146,12 +146,12 @@
 						</tr>
 						<tr>
 							<th>
-								€1,249.99
+								€1,249.99&nbsp &nbsp <button onclick="addToCart(5)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
 					
-					<table style="display: inline-block;" id="DellInspiron">
+					<table style="display: inline-block;" id="DellInspiron"><!----------------------------------------------------->
 						<tr>
 							<th><img src="../products/laptops/DellInspiron.png" alt="DellInspiron" title="DELL Inspiron Laptop - Gold" height="200"></th>
 						</tr>
@@ -160,7 +160,7 @@
 						</tr>
 						<tr>
 							<th>
-								€1,049.99
+								€1,049.99&nbsp &nbsp <button onclick="addToCart(6)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -174,7 +174,7 @@
 						</tr>
 						<tr>
 							<th>
-								€1,149.99
+								€1,149.99&nbsp &nbsp <button onclick="addToCart(7)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -188,7 +188,7 @@
 						</tr>
 						<tr>
 							<th>
-								€819.99
+								€819.99&nbsp &nbsp <button onclick="addToCart(8)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -202,7 +202,7 @@
 						</tr>
 						<tr>
 							<th>
-								€749.99
+								€749.99&nbsp &nbsp <button onclick="addToCart(9)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -219,7 +219,7 @@
 						</tr>
 						<tr>
 							<th>
-								€759.00
+								€759.00&nbsp &nbsp <button onclick="addToCart(10)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -233,7 +233,7 @@
 						</tr>
 						<tr>
 							<th>
-								€869.00
+								€869.00&nbsp &nbsp <button onclick="addToCart(11)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -247,7 +247,7 @@
 						</tr>
 						<tr>
 							<th>
-								€779.00
+								€779.00&nbsp &nbsp <button onclick="addToCart(12)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -261,7 +261,7 @@
 						</tr>
 						<tr>
 							<th>
-								€919.00
+								€919.00&nbsp &nbsp <button onclick="addToCart(13)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -275,7 +275,7 @@
 						</tr>
 						<tr>
 							<th>
-								€499.00
+								€499.00&nbsp &nbsp <button onclick="addToCart(14)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -292,7 +292,7 @@
 						</tr>
 						<tr>
 							<th>
-								€759.00
+								€759.00&nbsp &nbsp <button onclick="addToCart(15)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -306,7 +306,7 @@
 						</tr>
 						<tr>
 							<th>
-								€399.00
+								€399.00&nbsp &nbsp <button onclick="addToCart(16)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -320,7 +320,7 @@
 						</tr>
 						<tr>
 							<th>
-								€799.00
+								€799.00&nbsp &nbsp <button onclick="addToCart(17)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -334,7 +334,7 @@
 						</tr>
 						<tr>
 							<th>
-								€499.00
+								€499.00&nbsp &nbsp <button onclick="addToCart(18)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -348,7 +348,7 @@
 						</tr>
 						<tr>
 							<th>
-								€239.00
+								€239.00&nbsp &nbsp <button onclick="addToCart(19)" > Add to Cart</button>
 							</th>
 						</tr>
 					</table>
@@ -432,14 +432,14 @@
 			var allProducts = [
 				{
 					name:"RAVPower 20,100 mAh Portable Charger",
-					category:"Accessory",
+					category:"Accessories",
 					price:32.99,
 					thumbnail:"accessories/charger-1.png"
 				},
 				
 				{
 					name:"EasyAcc iChoc 5000 mAh",
-					category:"Accessory",
+					category:"Accessories",
 					price:13.99,
 					thumbnail:"accessories/charger-2.png"
 				},
@@ -616,8 +616,22 @@
 				phonesDiv.style.display = "none";
 				accessoriesDiv.style.display = "none";
 			}
+		</script>
+
+		<div id="cart"></div>
+		<script>
+		<!-- Add products to Storage -->
+			function addToCart(num)
+			{
+				var num;
+				localStorage.setItem([num]+" name", allProducts[num].name);
+				localStorage.setItem([num]+" category", allProducts[num].category);
+				localStorage.setItem([num]+" price", allProducts[num].price);
+				localStorage.setItem([num]+" thumbnail", allProducts[num].thumbnail);
+			}
 
 
 		</script>
+		</div>
 	</body>
 </html>
