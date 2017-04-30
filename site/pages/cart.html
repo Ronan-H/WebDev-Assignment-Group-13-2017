@@ -133,8 +133,10 @@
 			function inCart()
 			{
 			var product;
+			var picture;
 			for(i=0;i<20;i++)
 				{
+					picture = "<img src=\"../products/" + localStorage.getItem([i]+" thumbnail") + "\" align=\"left\" width=50 alt=\"product thumbnail\" />";
 					product = localStorage.getItem([i]+" name");
 					product += localStorage.getItem([i]+" category");
 					product += localStorage.getItem([i]+" price");
@@ -143,7 +145,7 @@
 						continue;
 					}
 					else{
-						document.getElementById("cartObjects").innerHTML += product + "<br>";
+						document.getElementById("productsCart").innerHTML += picture + product + "<br><br>";
 					}
 				}
 			}
