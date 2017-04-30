@@ -8,6 +8,8 @@
 	</head>
 	
 	<body>
+		<img src="../images/banners/earphones_banner.jpg" width="305" height="312" id="myPicture" alt="some image">
+
 		<!-- All elements in the header: header img, login box and button -->
 		<div id="headerDiv">
 			<img id="siteLogo" src="../images/site_logo_transparent.png" width=400 />
@@ -300,6 +302,16 @@
 				populateDetailsBoxes();
 			} else {
 				loginSignupMode();
+			}
+			<!-- Random Banner --> 
+			window.onload = choosePic;
+
+			var myPix = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
+
+			function choosePic() 
+			{
+			var randomNum = Math.floor(Math.random() * myPix.length);
+			document.getElementById("myPicture").src = myPix[randomNum];
 			}
 			
 		</script>
