@@ -639,10 +639,20 @@
 			function addToCart(num)
 			{
 				var num;
-				localStorage.setItem([num]+" name", allProducts[num].name);
-				localStorage.setItem([num]+" category", allProducts[num].category);
-				localStorage.setItem([num]+" price", allProducts[num].price);
-				localStorage.setItem([num]+" thumbnail", allProducts[num].thumbnail);
+				var count = 1;
+				var accCreated =! (localStorage.getItem([num]+" name")===null);
+				
+				if(accCreated)
+				{
+					++count;
+					localStorage.setItem([num]+" count", count);
+				}
+				else{
+					localStorage.setItem([num]+" name", allProducts[num].name);
+					localStorage.setItem([num]+" category", allProducts[num].category);
+					localStorage.setItem([num]+" price", allProducts[num].price);
+					localStorage.setItem([num]+" thumbnail", allProducts[num].thumbnail);
+				}
 			}
 			<!-- Random Banner --> 
 			window.onload = choosePic;
