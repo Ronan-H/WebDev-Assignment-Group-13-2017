@@ -47,6 +47,20 @@
 			<a href="shop.html">Shop</a>
 			Cart
 			<a href="myDetails.html">My Details</a>
+			Select your preferred banner: 
+			<button id="earphones">Earphones Banner </button>
+			&nbsp;&nbsp;
+			<button id="finger">Touch Banner </button>
+			&nbsp;&nbsp;
+			<button id="general">General Banner </button>
+			&nbsp;&nbsp;
+			<button id="laptops">Laptops Banner </button>
+			&nbsp;&nbsp;
+			<button id="orange">Orange Banner </button>
+			&nbsp;&nbsp;
+			<button id="phone">Phone Banner </button>
+			&nbsp;&nbsp;
+			<button id="tvs">Television Banner </button>
 		</div>
 		
 		<div id="shoppingCartDiv" class="segmentDiv">
@@ -177,6 +191,51 @@
 			{
 			var randomNum = Math.floor(Math.random() * myPix.length);
 			document.getElementById("banner").src = myPix[randomNum];
+			}
+			<!-- End of Banner -->
+						// Select a Banner 
+			var bannerArray = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
+						
+			document.getElementById("earphones").addEventListener("click", displayEarphones);
+			function displayEarphones()
+			{
+				document.getElementById("banner").src = bannerArray[0];
+			}
+			
+			document.getElementById("finger").addEventListener("click", displayTouch);
+			function displayTouch ()
+			{
+				document.getElementById("banner").src = bannerArray[1];
+			}
+			
+			document.getElementById("general").addEventListener("click", displayGeneral);
+			function displayGeneral ()
+			{
+				document.getElementById("banner").src = bannerArray[2];
+			}
+			
+			document.getElementById("laptops").addEventListener("click", displayLaptops);
+			function displayLaptops()
+			{
+				document.getElementById("banner").src = bannerArray[3];
+			}
+			
+			document.getElementById("orange").addEventListener("click", displayOrange);
+			function displayOrange()
+			{
+				document.getElementById("banner").src = bannerArray[4];
+			}
+		
+			document.getElementById("phone").addEventListener("click", displayPhone);
+			function displayPhone()
+			{
+				document.getElementById("banner").src = bannerArray[5];
+			}
+			
+			document.getElementById("tvs").addEventListener("click", displayTelevision);
+			function displayTelevision()
+			{
+				document.getElementById("banner").src = bannerArray[6];
 			}
 		</script>
 		
