@@ -71,14 +71,13 @@
 		<!-- Div used to display products selected to purchase -->
 		<div id="productsCart" class="segmentDiv">
 			<p>Selected products:</p>
-			<!--<button onclick="inCart()">see products</button>-->
 			<table class="productTable" id="productTable">
 				<tr>
-				<th id="invis"> </th>
-				<th class="tableHead">Product</th>
-				<th class="tableHead">Category</th>
-				<th class="tableHead">Price</th>
-				
+					<th id="invis"> </th>
+					<th class="tableHead">Product</th>
+					<th class="tableHead">Category</th>
+					<th class="tableHead">Price</th>
+					<th class="tableHead">Count</th>
 				</tr>
 			</table>
 			
@@ -242,6 +241,7 @@
 					product ="<th>" + localStorage.getItem([i]+" name")+"</th>";
 					product += "<th>" + localStorage.getItem([i]+" category")+"</th>";
 					product +="<th>€" + localStorage.getItem([i]+" price")+"</th>";
+					product +="<th>" + localStorage.getItem([i]+" count")+"</th>";
 					
 					accCreated =! (localStorage.getItem([i]+" name") === null);
 					

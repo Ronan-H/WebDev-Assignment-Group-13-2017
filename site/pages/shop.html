@@ -639,15 +639,18 @@
 			function addToCart(num)
 			{
 				var num;
-				var count = 1;
+				var count;
 				var accCreated =! (localStorage.getItem([num]+" name")===null);
 				
 				if(accCreated)
 				{
+					count = localStorage.getItem([num]+" count", count);
 					++count;
 					localStorage.setItem([num]+" count", count);
 				}
 				else{
+					count = 1;
+					localStorage.setItem([num]+" count", count);
 					localStorage.setItem([num]+" name", allProducts[num].name);
 					localStorage.setItem([num]+" category", allProducts[num].category);
 					localStorage.setItem([num]+" price", allProducts[num].price);
