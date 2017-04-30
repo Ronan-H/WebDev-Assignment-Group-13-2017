@@ -55,8 +55,10 @@
 		
 		<!-- Div used to display products selected to purchase -->
 		<div id="productsCart" class="segmentDiv">
-		<p>Selected products:</p>
-			
+			<p>Selected products:</p>
+			<button onclick="inCart()">see products</button>			
+			<h2 id="cartObjects"></h2>
+		
 		</div>
 		
 		<script>
@@ -126,6 +128,26 @@
 			}
 			
 			/* -========- END OF LOGIN BOX JAVASCRIPT -========- */
+			
+			/* -========- DISPLAY PRODUCTS IN CART -===========- */
+			function inCart()
+			{
+			var product;
+			for(i=0;i<20;i++)
+				{
+					product = localStorage.getItem([i]+" name");
+					product += localStorage.getItem([i]+" category");
+					product += localStorage.getItem([i]+" price");
+					if(product == null)
+					{
+						continue;
+					}
+					else{
+						document.getElementById("cartObjects").innerHTML += product + "<br>";
+					}
+				}
+			}
+			/* -=========- END OF DISPLAY PRODUCTS IN CART -===== */
 		</script>
 		
 	</body>
