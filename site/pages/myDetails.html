@@ -8,11 +8,10 @@
 	</head>
 	
 	<body>
-		<img src="../images/banners/earphones_banner.jpg" width="305" height="312" id="myPicture" alt="some image">
-
 		<!-- All elements in the header: header img, login box and button -->
 		<div id="headerDiv">
 			<img id="siteLogo" src="../images/site_logo_transparent.png" width=400 />
+			<img src="../images/banners/earphones_banner.jpg" id="banner" alt="some image">
 		</div>
 		
 		<!-- The bar with a list of buttons (links) to go to the other site's pages -->
@@ -21,6 +20,20 @@
 			<a href="../pages/shop.html">Shop</a>
 			<a href="../pages/cart.html">Cart</a>
 			My Details
+			Select your preferred banner: 
+			<button class="menubarButton"  id="earphones">Earphones Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton"  id="finger">Touch Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton" id="general">General Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton" id="laptops">Laptops Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton"  id="orange">Orange Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton" id="phone">Phone Banner </button>
+			&nbsp;&nbsp;
+			<button class="menubarButton" id="tvs">Television Banner </button>
 		</div>
 		
 		<div id="loginSignupDiv" class="segmentDiv">
@@ -313,7 +326,62 @@
 			var randomNum = Math.floor(Math.random() * myPix.length);
 			document.getElementById("myPicture").src = myPix[randomNum];
 			}
+			<!-- Random Banner --> 
+			window.onload = choosePic;
+
+			var myPix = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
+
+			function choosePic() 
+			{
+			var randomNum = Math.floor(Math.random() * myPix.length);
+			document.getElementById("banner").src = myPix[randomNum];
+			}
+			<!-- End of Random Banner --> 
+						// Select a Banner 
+			var bannerArray = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
+						
+			document.getElementById("earphones").addEventListener("click", displayEarphones);
+			function displayEarphones()
+			{
+				document.getElementById("banner").src = bannerArray[0];
+			}
 			
+			document.getElementById("finger").addEventListener("click", displayTouch);
+			function displayTouch ()
+			{
+				document.getElementById("banner").src = bannerArray[1];
+			}
+			
+			document.getElementById("general").addEventListener("click", displayGeneral);
+			function displayGeneral ()
+			{
+				document.getElementById("banner").src = bannerArray[2];
+			}
+			
+			document.getElementById("laptops").addEventListener("click", displayLaptops);
+			function displayLaptops()
+			{
+				document.getElementById("banner").src = bannerArray[3];
+			}
+			
+			document.getElementById("orange").addEventListener("click", displayOrange);
+			function displayOrange()
+			{
+				document.getElementById("banner").src = bannerArray[4];
+			}
+		
+			document.getElementById("phone").addEventListener("click", displayPhone);
+			function displayPhone()
+			{
+				document.getElementById("banner").src = bannerArray[5];
+			}
+			
+			document.getElementById("tvs").addEventListener("click", displayTelevision);
+			function displayTelevision()
+			{
+				document.getElementById("banner").src = bannerArray[6];
+			}
+		//end of select banner
 		</script>
 		
 	</body>
