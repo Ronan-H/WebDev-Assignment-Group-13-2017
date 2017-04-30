@@ -60,24 +60,98 @@
 			<table class="productTable" id="productTable">
 				<tr>
 				<th id="invis"> </th>
-				<th>Product</th>
-				<th>Category</th>
-				<th>Price</th>
+				<th class="tableHead">Product</th>
+				<th class="tableHead">Category</th>
+				<th class="tableHead">Price</th>
 				
 				</tr>
 			</table>
 			
+			<!-- Div containing "purchase" button, total, and coupon box -->
+			<div id="purchaseDiv">
+				<table id="purchaseTable">
+					<tr>
+						<th>Total:</th>
+						<td id="total">€0</td>
+					</tr>
+					
+					<tr>
+						<th>Coupon code (optional):</th>
+						<td><input id="couponCodeBox"></input></td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td><button id="purchaseButton">Purchase</button></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		
 		<script>
-		
+			function getCouponPercentage()
+			{
+				var enteredCoupon = document.getElementById("couponCodeBox").value;
+				
+				// Search through array for this coupon code
+				for (var i = 0; i < couponCodes.length; ++i)
+				{
+					var code = couponCodes[i];
+					if (enteredCoupon === code) {
+						return couponCodePercentages[i] / 100;
+					}
+				}
+				
+				// No coupon code found for entered code; discount is nothing
+				return 0.0;
+			}
+			
+			function doPurchase()
+			{
+				if (total == 0.0) {
+					alert("Please choose products before trying to purchase!");
+					return;
+				}
+				
+				var couponPercentage = getCouponPercentage();
+				var saving = total * couponPercentage;
+				var grandTotal = total - saving;
+				
+				var alertString = "You have just purchased goods to a total of: €" + grandTotal.toFixed(2) + ".\n";
+				if (saving > 0) {
+					alertString += "You saved " + (couponPercentage * 100) + "% through use of a coupon, saving you €" + saving.toFixed(2) + ".";
+				}
+				
+				var ccNumEnd = JSON.parse(localStorage.getItem("customer")).ccNumber + "";
+				ccNumEnd = ccNumEnd.substring(ccNumEnd.length - 4);
+				alertString += "\nYour credit card ending in \"" + ccNumEnd + "\" has been charged.\n";
+				
+				alert(alertString);
+				emptyCart();
+			}
+			
+			document.getElementById("purchaseButton").addEventListener("click", doPurchase);
+			
 			/* -========- LOGIN BOX JAVASCRIPT -========- */
 			var loginBoxDiv = document.getElementById("loginBoxDiv");
 			var nameBox = document.getElementById("nameBox");
 			var pwdBox = document.getElementById("passwordBox");
 			var greeting = document.getElementById("greeting");
 			
+			var total;
+			
+			var couponCodes = [
+				"GIVEME5",
+				"TAKEOFF20"
+			];
+			
+			var couponCodePercentages = [
+				5,
+				20.0
+			];
+			
 			inCart();
+			showTotal();
 			
 			function loginMode()
 			{
@@ -142,6 +216,7 @@
 			/* -========- DISPLAY PRODUCTS IN CART -===========- */
 			function inCart()
 			{
+			document.getElementById("productTable").innerHTML = "";
 			var product;
 			var picture;
 			var accCreated;
@@ -165,6 +240,45 @@
 						continue;
 					}
 				}
+			}
+			
+			function emptyCart()
+			{
+				for (var key in localStorage)
+				{
+					console.log("key: " + key);
+					if (key.endsWith("category") ||
+						key.endsWith("name") ||
+						key.endsWith("price") ||
+						key.endsWith("thumbnail") ||
+						key.endsWith("numCount")) {
+							// remove item
+							var item = localStorage.getItem(key);
+							localStorage.removeItem(key);
+						}
+				}
+				inCart();
+				showTotal();
+			}
+			
+			function calcTotal()
+			{
+				total = 0;
+				for (var key in localStorage)
+				{
+					if (key.endsWith(" price")) {
+						var price = parseFloat(localStorage.getItem(key));
+						total += price;
+					}
+				}
+			}
+			
+			function showTotal()
+			{
+				calcTotal();
+				
+				// update total html field
+				document.getElementById("total").innerHTML = "€" + total;
 			}
 			/* -=========- END OF DISPLAY PRODUCTS IN CART -===== */
 		</script>

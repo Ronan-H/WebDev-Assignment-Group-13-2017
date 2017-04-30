@@ -163,3 +163,12 @@ table th {
 #warningsDiv img {
 	padding: 5px;
 }
+
+table#purchaseTable {
+	border:0;
+	margin: 5px;
+}
+
+table#purchaseTable th {
+	background-color: transparent;
+}
