@@ -78,6 +78,15 @@ p {
 	color:#ff6660;
 	border-style: inset;
 }
+.menubarButton { 
+	background-color: red;
+	border: 1px 0;
+	border-radius: 0.4em;
+	border-style: solid;
+	padding: 8px 0;
+	border-color: black; 
+
+}
 
 .segmentDiv{
 	background-color: #cccccc;
