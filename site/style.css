@@ -21,7 +21,19 @@ p {
 }
 
 #banner {
+	width: 100%;
+	height: 25em;
+	z-index: -1;
 	
+}
+#siteLogo { 
+  position:absolute;
+  right: 35%;
+  bottom: .5%;
+  width: 25%;
+  max-width:25%;
+  z-index: +1;
+
 }
 
 #headerDiv {

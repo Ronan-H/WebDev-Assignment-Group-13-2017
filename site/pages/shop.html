@@ -6,11 +6,10 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 	</head>
 	<body>
-			<img src="../images/banners/earphones_banner.jpg" width="305" height="312" id="myPicture" alt="some image">
-
 		<!-- All elements in the header: header img, login box and button -->
 		<div id="headerDiv">
 			<img id="siteLogo" src="../images/site_logo_transparent.png" width=400 />
+			<img src="../images/banners/earphones_banner.jpg" id="banner" alt="some image">
 			
 			<!-- Greeting displayed when the user is logged in -->
 			<h2 id="greeting">Hello, NAME.</h2>
@@ -639,7 +638,7 @@
 			function choosePic() 
 			{
 			var randomNum = Math.floor(Math.random() * myPix.length);
-			document.getElementById("myPicture").src = myPix[randomNum];
+			document.getElementById("banner").src = myPix[randomNum];
 			}
 
 		</script>
