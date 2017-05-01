@@ -3,15 +3,15 @@
 <html>
 	<head>
 		<title>Compu c</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 	</head>
 	
 	<body>
 		<!-- All elements in the header: header img, login box and button -->
 		<div id="headerDiv">
-			<img id="siteLogo" src="images/site_logo_transparent.png" width=400 />
-			<img src="images/banners/earphones_banner.jpg" id="banner" alt="some image">
+			<img id="siteLogo" src="../images/site_logo_transparent.png" width=400 />
+			<img src="../images/banners/earphones_banner.jpg" id="banner" alt="some image">
 			
 			<!-- Greeting displayed when the user is logged in -->
 			<h2 id="greeting">Hello, NAME.</h2>
@@ -43,10 +43,10 @@
 		
 		<!-- The bar with a list of buttons (links) to go to the other site's pages -->
 		<div id="menubarDiv">
-			<a href="index.html">Home</a>
-			<a href="pages/shop.html">Shop</a>
-			<a href="pages/cart.html">Cart</a>
-			<a href="pages/MyDetails.html">My Details</a>
+			Home
+			<a href="shop.html">Shop</a>
+			<a href="cart.html">Cart</a>
+			<a href="MyDetails.html">My Details</a>
 			Select your preferred banner: 
 			<button class="menubarButton" id="earphones">Earphones Banner </button>
 			&nbsp;&nbsp;
@@ -67,8 +67,8 @@
 			<h1>Welcome to Compu c!</h1>
 			<p>Compu c is an upcoming electronics outlet based in Galway, Ireland.</p>
 			<p>We specialise in selling a range of products including: televisions, laptops, mobile phones and accessories.</p>
-			<p>Visit our <a href="pages/shop.html">shop</a> page to see the products that are available.</p>
-			<p>To sign up or view your details, visit the <a href="pages/myDetails.html">my details</a> page.</p>
+			<p>Visit our <a href="shop.html">shop</a> page to see the products that are available.</p>
+			<p>To sign up or view your details, visit the <a href="myDetails.html">my details</a> page.</p>
 			<p>If you already have an account you may log in at the top of any page.</p>
 			<p> Enjoy! </p>
 			
@@ -90,7 +90,7 @@
 		
 		<div id="socialMediaDiv" class="segmentDiv">
 		<h1> Our Social Media Platforms </h1>
-		<img src="social-media-buttons.jpg" alt="Social Media Images" style="height:135px">
+		<img src="../social-media-buttons.jpg" alt="Social Media Images" style="height:135px">
 		<br>
 		<a href="facebook.com/compuc">Facebook</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -207,8 +207,7 @@
 			}
 			
 
-			var myPix = new Array("images/banners/earphones_banner.jpg","images/banners/finger_banner.jpg","images/banners/general_banner.jpg", 	"images/banners/laptop_banner.jpg", 
-						"images/banners/orange_banner.jpg", "images/banners/phone_banner.jpg", "images/banners/tvs_banner.jpg");
+			var myPix = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
 
 			function choosePic() 
 			{
@@ -216,8 +215,7 @@
 				document.getElementById("banner").src = myPix[randomNum];
 			}
 			// Select a Banner 
-			var bannerArray = new Array("images/banners/earphones_banner.jpg","images/banners/finger_banner.jpg","images/banners/general_banner.jpg", 	"images/banners/laptop_banner.jpg", 
-						"images/banners/orange_banner.jpg", "images/banners/phone_banner.jpg", "images/banners/tvs_banner.jpg");
+			var bannerArray = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
 						
 			document.getElementById("earphones").addEventListener("click", displayEarphones);
 			function displayEarphones()
