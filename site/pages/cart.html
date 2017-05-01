@@ -304,6 +304,7 @@
 					product += "<th>" + localStorage.getItem([i]+" category")+"</th>";
 					product +="<th>€" + localStorage.getItem([i]+" price")+"</th>";
 					product +="<th>" + localStorage.getItem([i]+" count")+"</th>";
+					product +="<th><button id=\"remove\" onclick=\"remove("+[i]+")>\"delete\"</button></th>";
 					
 					accCreated =! (localStorage.getItem([i]+" name") === null);
 					
@@ -316,6 +317,24 @@
 					{
 						continue;
 					}
+				}
+			}
+			
+			//Removal function
+			function remove(i)
+			{
+				if([i]+" count" > 1)
+				{
+					count = localStorage.getItem([i]+" count", count);
+					--count;
+					localStorage.setItem([i]+"  count", count);
+				}
+				else{
+					localStorage.removeItem([i]+" name");
+					localStorage.removeItem([i]+" category");
+					localStorage.removeItem([i]+" price");
+					localStorage.removeItem([i]+" thumbnail");
+					localStorage.removeItem([i]+" count");
 				}
 			}
 			
@@ -430,6 +449,5 @@
 				document.getElementById("banner").src = bannerArray[6];
 			}
 		</script>
-		
 	</body>
 </html>
