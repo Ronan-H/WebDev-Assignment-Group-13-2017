@@ -36,6 +36,17 @@ p {
 
 }
 
+.sidebarDiv button{
+	border:0;
+	background-color:#CC0000;
+	font-size: 24px;
+	font-family: 
+}
+
+.sidebarDiv button a:active{
+	border-color:#CC0000;
+}
+
 #headerDiv {
 	position: relative;
 	width: 100%;
