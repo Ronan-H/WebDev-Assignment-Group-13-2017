@@ -43,8 +43,8 @@ p {
 	font-family: 
 }
 
-.sidebarDiv button a:active{
-	border-color:#CC0000;
+.sidebarDiv button:focus {
+	outline: none;
 }
 
 #headerDiv {

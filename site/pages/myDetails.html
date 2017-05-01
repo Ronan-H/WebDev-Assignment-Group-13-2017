@@ -12,6 +12,9 @@
 		<div id="headerDiv">
 			<img id="siteLogo" src="../images/site_logo_transparent.png" width=400 />
 			<img src="../images/banners/earphones_banner.jpg" id="banner" alt="some image">
+			
+			<!-- Greeting displayed when the user is logged in -->
+			<h2 id="greeting">Hello, NAME.</h2>
 		</div>
 		
 		<!-- The bar with a list of buttons (links) to go to the other site's pages -->
@@ -400,6 +403,34 @@
 			{
 				localStorage.setItem("bannerS", bannerArray[6]);
 				document.getElementById("banner").src = bannerArray[6];
+			}
+			
+			var accCreated = !(localStorage.getItem("customer") === null);
+			var loggedIn = false;
+			
+			if (accCreated) {
+				loggedIn = (localStorage.getItem("loggedIn") === "true");
+			}
+			
+			/* If user is signed in, display greeting */
+			if (loggedIn) {
+				greetingMode();
+			} else {
+				loginMode();
+			}
+			
+			function greetingMode()
+			{
+				var greeting = document.getElementById("greeting");
+				greeting.style.display = "block";
+				var custName = JSON.parse(localStorage.getItem("customer")).name;
+				greeting.innerHTML = "Hello, " + custName + ".";
+			}
+			
+			function loginMode()
+			{
+				var greeting = document.getElementById("greeting");
+				greeting.style.display = "none";
 			}
 		</script>
 		
