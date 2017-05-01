@@ -340,7 +340,8 @@
 					var found = false;
 					for (var key in localStorage)
 					{
-						if(localStorage.getItem(key).endsWith(" name"))
+						console.log("remove(i) key: " + key);
+						if(key.endsWith(" name"))
 						{
 							found = true;
 							break;
