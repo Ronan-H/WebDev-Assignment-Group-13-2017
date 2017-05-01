@@ -101,6 +101,7 @@
 				
 				<h2 id="emptyTextfieldsWarning"></h2>
 				<h2 id="invalidEmailWarning"></h2>
+				<h2 id="invalidCcnumWarning"></h2>
 			</div>
 		</div>
 		
@@ -123,6 +124,7 @@
 			<!-- Details warnings elements -->
 			var invalidEmailText = document.getElementById("invalidEmailWarning");
 			var emptyTextfieldsText = document.getElementById("emptyTextfieldsWarning");
+			var invalidCcnumText = document.getElementById("invalidCcnumWarning");
 			var warningSymbol = document.getElementById("warningSymbol");
 			
 			<!-- customer object -->
@@ -272,6 +274,13 @@
 				return false;
 			}
 			
+			function isCcnumValid()
+			{
+				var ccNum = ccNumberBox.value;
+				var isValid = ((ccNum + "").length == 16);
+				return isValid;
+			}
+			
 			function updateWarnings()
 			{
 				var validEmail = isEmailValid();
@@ -289,7 +298,14 @@
 					emptyTextfieldsText.innerHTML = "";
 				}
 				
-				if (!validEmail || textBoxesEmpty) {
+				var validCcnum = isCcnumValid();
+				if (validCcnum) {
+					invalidCcnumText.innerHTML = "";
+				} else {
+					invalidCcnumText.innerHTML = "Your credit card number should be 16 digits long; please correct it!";
+				}
+				
+				if (!validEmail || textBoxesEmpty || !validCcnum) {
 					warningSymbol.style.display = "block";
 				} else {
 					warningSymbol.style.display = "none";
