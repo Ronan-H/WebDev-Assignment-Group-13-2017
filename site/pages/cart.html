@@ -127,6 +127,13 @@
 					return;
 				}
 				
+				// CHeck if user is logged ins
+				var loggedIn = (localStorage.getItem("loggedIn") === "true");
+				if (!loggedIn) {
+					alert("Please log in before purchasing products (you may need to make an account first).");
+					return;
+				}
+				
 				var couponPercentage = getCouponPercentage();
 				var saving = total * couponPercentage;
 				var grandTotal = total - saving;
@@ -138,7 +145,7 @@
 				
 				var ccNumEnd = JSON.parse(localStorage.getItem("customer")).ccNumber + "";
 				ccNumEnd = ccNumEnd.substring(ccNumEnd.length - 4);
-				alertString += "\nYour credit card ending in \"" + ccNumEnd + "\" has been charged.\n";
+				alertString += "\nYour credit card ending in \"" + ccNumEnd + "\" has been charged for that amount.\n";
 				
 				alert(alertString);
 				emptyCart();
@@ -230,7 +237,6 @@
 			/* -========- DISPLAY PRODUCTS IN CART -===========- */
 			function inCart()
 			{
-			document.getElementById("productTable").innerHTML = "";
 			var product;
 			var picture;
 			var accCreated;
@@ -283,7 +289,9 @@
 				{
 					if (key.endsWith(" price")) {
 						var price = parseFloat(localStorage.getItem(key));
-						total += price;
+						var qty = localStorage.getItem(parseInt(key.substring(0, key.length - 6)) + " count");
+						console.log("qty for \"" + key + "\": " + qty);
+						total += price * qty;
 					}
 				}
 			}
@@ -293,7 +301,7 @@
 				calcTotal();
 				
 				// update total html field
-				document.getElementById("total").innerHTML = "€" + total;
+				document.getElementById("total").innerHTML = "€" + total.toFixed(2);
 			}
 			/* -=========- END OF DISPLAY PRODUCTS IN CART -===== */
 			<!-- Random Banner --> 
