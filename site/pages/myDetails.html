@@ -63,9 +63,27 @@
 			</table>
 		</div>
 		
+		<div id="validateLoginDiv" class="segmentDiv">
+			<h2>Please authenticate yourself before making changes to you details</h2>
+			<table>
+				<tr>
+					<th>Password:</th>
+					<td><input id="passwordValidationBox" type="password"></input></td>
+				</tr>
+				
+				<tr>
+					<!-- Buttons -->
+					<td></td>
+					<td>
+						<button id="validateButton">Validate password</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
 		<!-- Allow the user to change their details here -->
 		<div id="detailsDiv" class="segmentDiv">
-			<h2>Edit your details here (updated live)</h2>
+			<h2>Edit your details here (saved automatically)</h2>
 			
 			<table>
 				<tr>
@@ -129,6 +147,11 @@
 			var emptyTextfieldsText = document.getElementById("emptyTextfieldsWarning");
 			var invalidCcnumText = document.getElementById("invalidCcnumWarning");
 			var warningSymbol = document.getElementById("warningSymbol");
+			<!-- authentication elements -->
+			var validationDiv = document.getElementById("validateLoginDiv");
+			var validateButton = document.getElementById("validateButton");
+			var passwordValidationBox = document.getElementById("passwordValidationBox");
+			
 			
 			<!-- customer object -->
 			var cust = {name:"not set", password:"not set", 
@@ -136,18 +159,28 @@
 					email:"not set", phoneNumber:0,
 					ccNumber:0};
 			
-			// Hide details box, show loginSignup box
+			// Hide details box, hide auth box, show loginSignup box
 			function loginSignupMode()
 			{
 				loginSignupDiv.style.display = "block";
 				detailsDiv.style.display = "none";
+				validationDiv.style.display = "none";
 			}
 			
-			// Hide loginSignup box, show details box
+			// Hide loginSignup box, hide auth box, show details box
 			function detailsMode()
 			{
 				loginSignupDiv.style.display = "none";
 				detailsDiv.style.display = "block";
+				validationDiv.style.display = "none";
+			}
+			
+			// Hide loginSignup box, hide details box, show auth box
+			function authenticationMode()
+			{
+				loginSignupDiv.style.display = "none";
+				detailsDiv.style.display = "none";
+				validationDiv.style.display = "block";
 			}
 			
 			// Update the cust var and the object in localStorage
@@ -315,11 +348,27 @@
 				}
 			}
 			
+			function checkPassword()
+			{
+				var enteredPass = passwordValidationBox.value;
+				var realPass = JSON.parse(localStorage.getItem("customer")).password;
+				var correctPass = (enteredPass == realPass);
+				
+				if (correctPass) {
+					detailsMode();
+					populateDetailsBoxes();
+				} else {
+					alert("Sorry, incorrect password. Please try again.");
+				}
+			}
+			
 			// Update details whenever any action occurs inside the detailsDiv
 			detailsDiv.addEventListener("input", updateDetails);
 			
 			signupButton.addEventListener("click", onSignupButtonClicked);
 			loginButton.addEventListener("click", onLoginButtonClicked);
+			
+			validateButton.addEventListener("click", checkPassword);
 			
 			// Show the correct layout (eg. hide login box if already logged in)
 			var accCreated = !(localStorage.getItem("customer") === null);
@@ -330,8 +379,7 @@
 			}
 			
 			if (loggedIn) {
-				detailsMode();
-				populateDetailsBoxes();
+				authenticationMode();
 			} else {
 				loginSignupMode();
 			}
