@@ -304,7 +304,8 @@
 					product += "<th>" + localStorage.getItem([i]+" category")+"</th>";
 					product +="<th>€" + localStorage.getItem([i]+" price")+"</th>";
 					product +="<th>" + localStorage.getItem([i]+" count")+"</th>";
-					product +="<th><button id=\"remove\" onclick=\"remove("+[i]+")>\"delete\"</button></th>";
+					var buttonString = "<th><button id=\"remove\" onclick=remove("+[i]+")>delete</button></th>";
+					product += buttonString;
 					
 					accCreated =! (localStorage.getItem([i]+" name") === null);
 					
@@ -336,6 +337,8 @@
 					localStorage.removeItem([i]+" thumbnail");
 					localStorage.removeItem([i]+" count");
 				}
+				inCart();
+				showTotal();
 			}
 			
 			function emptyCart()
