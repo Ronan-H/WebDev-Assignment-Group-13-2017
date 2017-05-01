@@ -162,16 +162,32 @@ table th {
 	height: 100%;
 }
 
-#shoppingCart{
+/*#shoppingCart{
 	float:right;
 	width: auto;
 	margin: 4px 20px;
-}
-
-#productsCart{
+	
 	
 }
 
+#productsCart img {
+	    width: 200px;
+		height: autopx;
+		vertical-align: auto; 
+}
+
+
+#productTable th { 
+		width: 688px; 
+		
+		
+		
+}
+
+.tableHead {
+	background-color: red; 
+	
+}*/
 #headerDiv #loginBoxDiv, #greeting {
 	position: absolute;
 	top: 3px;
