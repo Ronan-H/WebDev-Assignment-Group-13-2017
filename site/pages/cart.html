@@ -43,7 +43,7 @@
 		
 		<!-- The bar with a list of buttons (links) to go to the other site's pages -->
 		<div id="menubarDiv">
-			<a href="../index.html">Home</a>
+			<a href="index.html">Home</a>
 			<a href="shop.html">Shop</a>
 			Cart
 			<a href="myDetails.html">My Details</a>
@@ -73,11 +73,11 @@
 			<p>Selected products:</p>
 			<table class="productTable" id="productTable">
 				<tr>
-					<th id="invis"> </th>
-					<th class="tableHead">Product</th>
-					<th class="tableHead">Category</th>
-					<th class="tableHead">Price</th>
-					<th class="tableHead">Count</th>
+					<td id="tableHead"> </td>
+					<td id="tableHead">Product</td>
+					<td id="tableHead">Category</td>
+					<td id="tableHead">Price</td>
+					<td id="tableHead">Quantity</td>
 				</tr>
 			</table>
 			
@@ -285,7 +285,7 @@
 			
 			for(i=0;i<20;i++)
 				{
-					picture = "<th><img src=\"../products/" + localStorage.getItem([i]+" thumbnail") + "\" align=\"left\" width=80 alt=\"product thumbnail\" /></th>";
+					picture = "<th><img src=\"../products/" + localStorage.getItem([i]+" thumbnail") + "\" alt=\"product thumbnail\" /></th>";
 					product ="<th>" + localStorage.getItem([i]+" name")+"</th>";
 					product += "<th>" + localStorage.getItem([i]+" category")+"</th>";
 					product +="<th>€" + localStorage.getItem([i]+" price")+"</th>";
@@ -295,7 +295,7 @@
 					
 					if(accCreated)
 					{
-						document.getElementById("productTable").innerHTML += picture + product + "<br>";
+						document.getElementById("productTable").innerHTML += picture + product ;
 
 					}
 					else

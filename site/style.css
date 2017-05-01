@@ -36,6 +36,17 @@ p {
 
 }
 
+.sidebarDiv button{
+	border:0;
+	background-color:#CC0000;
+	font-size: 24px;
+	font-family: 
+}
+
+.sidebarDiv button a:active{
+	border-color:#CC0000;
+}
+
 #headerDiv {
 	position: relative;
 	width: 100%;
@@ -157,8 +168,26 @@ table th {
 	margin: 4px 20px;
 }
 
-#productsCart{
-	
+#productsCart img {
+    width: 200px;
+	height: autopx;
+	vertical-align: auto; 
+}
+
+#productTable {
+	background-color:#CC0000;
+}
+
+#productTable th { 
+		width: 688px; 
+		background-color:#b3b3b3;
+}
+
+#tableHead {
+	background-color: #cc0000; 
+	font-weight: bold;
+	text-align: center;
+	font-size: 20px;
 }
 
 #headerDiv #loginBoxDiv, #greeting {
