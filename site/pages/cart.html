@@ -336,6 +336,20 @@
 					localStorage.removeItem([i]+" price");
 					localStorage.removeItem([i]+" thumbnail");
 					localStorage.removeItem([i]+" count");
+					
+					var found = false;
+					for (var key in localStorage)
+					{
+						if(localStorage.getItem(key).endsWith(" name"))
+						{
+							found = true;
+							break;
+						}
+					}
+					if((found == false))
+					{
+						localStorage.removeItem("ready");
+					}
 				}
 				inCart();
 				showTotal();
@@ -350,7 +364,8 @@
 						key.endsWith("name") ||
 						key.endsWith("price") ||
 						key.endsWith("thumbnail") ||
-						key.endsWith("numCount")) {
+						key.endsWith("numCount") ||
+						key.endsWith("ready")){
 							// remove item
 							var item = localStorage.getItem(key);
 							localStorage.removeItem(key);
