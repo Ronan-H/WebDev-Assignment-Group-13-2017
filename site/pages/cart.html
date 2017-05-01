@@ -71,14 +71,13 @@
 		<!-- Div used to display products selected to purchase -->
 		<div id="productsCart" class="segmentDiv">
 			<p>Selected products:</p>
-			<!--<button onclick="inCart()">see products</button>-->
 			<table class="productTable" id="productTable">
 				<tr>
-				<th id="invis"> </th>
-				<th class="tableHead">Product</th>
-				<th class="tableHead">Category</th>
-				<th class="tableHead">Price</th>
-				
+					<th id="invis"> </th>
+					<th class="tableHead">Product</th>
+					<th class="tableHead">Category</th>
+					<th class="tableHead">Price</th>
+					<th class="tableHead">Count</th>
 				</tr>
 			</table>
 			
@@ -242,6 +241,7 @@
 					product ="<th>" + localStorage.getItem([i]+" name")+"</th>";
 					product += "<th>" + localStorage.getItem([i]+" category")+"</th>";
 					product +="<th>€" + localStorage.getItem([i]+" price")+"</th>";
+					product +="<th>" + localStorage.getItem([i]+" count")+"</th>";
 					
 					accCreated =! (localStorage.getItem([i]+" name") === null);
 					
@@ -297,61 +297,74 @@
 			}
 			/* -=========- END OF DISPLAY PRODUCTS IN CART -===== */
 			<!-- Random Banner --> 
+			var accCreated = !(localStorage.getItem("bannerS")=== null); 
+			if(accCreated){
+			document.getElementById("banner").src = localStorage.getItem("bannerS");
+				
+			}
+			else {
 			window.onload = choosePic;
+			}
+			
 
 			var myPix = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
 
 			function choosePic() 
 			{
-			var randomNum = Math.floor(Math.random() * myPix.length);
-			document.getElementById("banner").src = myPix[randomNum];
+				var randomNum = Math.floor(Math.random() * myPix.length);
+				document.getElementById("banner").src = myPix[randomNum];
 			}
-			<!-- End of Banner -->
-						// Select a Banner 
+			// Select a Banner 
 			var bannerArray = new Array("../images/banners/earphones_banner.jpg","../images/banners/finger_banner.jpg","../images/banners/general_banner.jpg", "../images/banners/laptop_banner.jpg", "../images/banners/orange_banner.jpg", "../images/banners/phone_banner.jpg", "../images/banners/tvs_banner.jpg");
 						
 			document.getElementById("earphones").addEventListener("click", displayEarphones);
 			function displayEarphones()
 			{
+				localStorage.setItem("bannerS", bannerArray[0]);
 				document.getElementById("banner").src = bannerArray[0];
 			}
 			
 			document.getElementById("finger").addEventListener("click", displayTouch);
 			function displayTouch ()
 			{
+				localStorage.setItem("bannerS", bannerArray[1]);
 				document.getElementById("banner").src = bannerArray[1];
 			}
 			
 			document.getElementById("general").addEventListener("click", displayGeneral);
 			function displayGeneral ()
 			{
+				localStorage.setItem("bannerS", bannerArray[2]);
 				document.getElementById("banner").src = bannerArray[2];
 			}
 			
 			document.getElementById("laptops").addEventListener("click", displayLaptops);
 			function displayLaptops()
 			{
+				localStorage.setItem("bannerS", bannerArray[3]);
 				document.getElementById("banner").src = bannerArray[3];
 			}
 			
 			document.getElementById("orange").addEventListener("click", displayOrange);
 			function displayOrange()
 			{
+				localStorage.setItem("bannerS", bannerArray[4]);
 				document.getElementById("banner").src = bannerArray[4];
 			}
 		
 			document.getElementById("phone").addEventListener("click", displayPhone);
 			function displayPhone()
 			{
+				localStorage.setItem("bannerS", bannerArray[5]);
 				document.getElementById("banner").src = bannerArray[5];
 			}
 			
 			document.getElementById("tvs").addEventListener("click", displayTelevision);
 			function displayTelevision()
 			{
+				localStorage.setItem("bannerS", bannerArray[6]);
 				document.getElementById("banner").src = bannerArray[6];
 			}
-		//end of select banner
 		</script>
 		
 	</body>
