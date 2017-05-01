@@ -71,6 +71,7 @@
 		<!-- Div used to display products selected to purchase -->
 		<div id="productsCart" class="segmentDiv">
 			<p>Selected products:</p>
+			<h2 id="productEmpty">You have no selected items for purchase.</h2>
 			<table class="productTable" id="productTable">
 				<tr>
 					<td id="tableHead"> </td>
@@ -278,6 +279,18 @@
 				document.getElementById("productTable").innerHTML = sessionStorage.getItem("cart header html");
 			} else {
 				sessionStorage.setItem("cart header html", document.getElementById("productTable").innerHTML);
+			}
+			
+			var readyCreated = ! (localStorage.getItem("ready")=== null);
+			
+			if(readyCreated)
+			{
+				document.getElementById("productTable").style.display = 'block';
+				document.getElementById("productEmpty").style.display = 'none';
+			}
+			else{
+				document.getElementById("productTable").style.display = 'none';
+				document.getElementById("productEmpty").style.display = 'block';
 			}
 			
 			var product;
