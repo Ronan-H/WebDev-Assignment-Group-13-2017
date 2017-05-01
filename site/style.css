@@ -167,9 +167,21 @@ table th {
 	right: 3px;
 }
 
+#loginBoxDiv {
+	background-color: rgba(255, 255, 255, 0.7);
+	border: 2px solid black;
+	border-radius: 7px;
+	box-shadow: 2px 2px 3px #000000;
+}
+
+#loginBoxDiv h2 {
+	color: #CC0000;
+	-webkit-text-stroke: 1.0px #990000;
+}
+
 #greeting {
 	color: #CC0000;
-	background-color: LightCyan    ;
+	background-color: LightCyan;
 	font-family: calibri;
 	border: 2px solid black;
 	padding: 3px;

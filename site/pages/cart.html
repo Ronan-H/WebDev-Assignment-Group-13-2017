@@ -122,15 +122,48 @@
 			
 			function doPurchase()
 			{
+				var cust = JSON.parse(localStorage.getItem("customer"));
+				
 				if (total == 0.0) {
 					alert("Please choose products before trying to purchase!");
 					return;
 				}
 				
-				// CHeck if user is logged ins
+				// Check if user is logged ins
 				var loggedIn = (localStorage.getItem("loggedIn") === "true");
 				if (!loggedIn) {
 					alert("Please log in before purchasing products (you may need to make an account first).");
+					return;
+				}
+				
+				// Validate login
+				var validLogin = false;
+				var actualPass = cust.password;
+				var isValid;
+				var hasGottenWrong = false;
+				
+				do
+				{
+					var promptString
+					if (hasGottenWrong) {
+						promptString = "Sorry, that password was incorrect. Please try again.";
+					} else {
+						promptString = "Please enter your password again for validation purposes:";
+					}
+					
+					var enteredPass = prompt(promptString);
+					isValid = (enteredPass == actualPass);
+					
+					if (!isValid) {
+						hasGottenWrong = true;
+					}
+					
+				} while (!isValid);
+				
+				// Validate credit card number
+				var ccNum = cust.ccNumber;
+				if (ccNum.length != 16) {
+					alert("Sorry, your credit card number is invalid. Please visit the My Details page to fix it.");
 					return;
 				}
 				
@@ -146,6 +179,7 @@
 				var ccNumEnd = JSON.parse(localStorage.getItem("customer")).ccNumber + "";
 				ccNumEnd = ccNumEnd.substring(ccNumEnd.length - 4);
 				alertString += "\nYour credit card ending in \"" + ccNumEnd + "\" has been charged for that amount.\n";
+				alertString += "Thank you for choosing Compu c!"
 				
 				alert(alertString);
 				emptyCart();
@@ -237,6 +271,14 @@
 			/* -========- DISPLAY PRODUCTS IN CART -===========- */
 			function inCart()
 			{
+			// Save the headers for when the cart is cleared, if they need to be saved
+			// Otherwise, load header from sessionStorage
+			if (!(sessionStorage.getItem("cart header html") === null)) {
+				document.getElementById("productTable").innerHTML = sessionStorage.getItem("cart header html");
+			} else {
+				sessionStorage.setItem("cart header html", document.getElementById("productTable").innerHTML);
+			}
+			
 			var product;
 			var picture;
 			var accCreated;
